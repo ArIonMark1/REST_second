@@ -5,6 +5,8 @@
   <div>
     Data from BackEnd
     {{authors}}
+    <br>
+    {{ Myurls }}
       <tr v-for="author in authors" :key="author.id">
       <td>DATA</td>
         <td>{{authors}}</td>
@@ -22,8 +24,9 @@
 
 <script>
   import Authors from './components/Authors.vue'
+  import axios from 'axios'
 
-  const API_URL ='http://127.0.0.1:8000/authors/'
+  const API_URL ='http://127.0.0.1:8000/users/'
 
   export default {
     name: 'App',
@@ -34,18 +37,26 @@
         authors: [],
         Myurls: `${API_URL}`,
       }),
-    watch: {
-      Myurls: function(url) {
-       
-          fetch(url)
-          .then(response => console.log('Json files is here: ' + response.json() ))
-          .then( json => console.log(`Json files is here: ${json}`) )
+      mounted() {
+        axios
+          .get('http://127.0.0.1:8000/users')
+          .then(response => response.json())
+          .then(json => this.authors = json)
           .catch(err => alert(err))
+      },
+
+    // watch: {
+    //   Myurls: function(url) {
+       
+    //     fetch(url)
+    //       .then(response => console.log('Json files is here: ' + response.json() ))
+    //       .then( json => console.log(`Json files is here: ${json}`) )
+    //       .catch(err => alert(err))
 
           
            
-      }
-    }
+    //   }
+    // }
 
       
   }
