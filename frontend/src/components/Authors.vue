@@ -1,5 +1,6 @@
 <template>
   <div>
+  <!-- data from BackEnd
     <tr v-for="author in authors" :key="author.id">
     <td>DATA</td>
       <td>{{authors}}</td>
@@ -8,14 +9,14 @@
       <td>{{author.last_name}}</td>
       <td>{{author.birthday_year}}</td>
       
-    </tr>
+    </tr> -->
   </div>
 </template>
 
 
 <script>
 
-  const API_URL ='http://127.0.0.1:8000/authors/'
+  // const API_URL ='http://127.0.0.1:8000/authors/'
 
   export default {
 
@@ -25,17 +26,17 @@
 
     }),
 
-    mounted() {
-      this.makeGETRequest(`${API_URL}`)
-    },
+    // mounted() {
+    //   this.makeGETRequest(`${API_URL}`)
+    // },
 
-    methods: {
-      makeGETRequest(url) {
-        fetch(url)
-          .then((data) => data.json() )
-          .then( (data) => this.authors = data )
-      }
-      }
+    // methods: {
+    //   makeGETRequest(url) {
+    //     fetch(url)
+    //       .then((data) => {data.json(); console.log(data.json())} )
+    //       .then( (data) => this.authors = data )
+    //   }
+    //   }
     }
 
 </script>
