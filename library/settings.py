@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,10 +24,23 @@ SECRET_KEY = 'hz+=71q=(cr!w59=qi%723aeilf1so8_mq@ae#cq3_%=zisjeg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = ['http://localhost:8080',
-                        'http://192.168.0.100:8080',]
+                        'http://192.168.0.100:8080',
+                        'http://127.0.0.1:8000',
+                        ]
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8080',
+    'http://192.168.0.100:8080',
+    'http://127.0.0.1:8000',
+)
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_ALLOW_ALL = True
+
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8080',
+                        'http://192.168.0.100:8080',
+                        'http://127.0.0.1:8000', ]
 # Application definition
 
 INSTALLED_APPS = [

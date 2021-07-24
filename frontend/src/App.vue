@@ -4,29 +4,29 @@
 
   <div>
     Data from BackEnd
-    {{authors}}
     <br>
-    {{ Myurls }}
-      <tr v-for="author in authors" :key="author.id">
-      <td>DATA</td>
-        <td>{{authors}}</td>
+    =================
+    <br>
 
-        <td>{{author.first_name}}</td>
-        <td>{{author.last_name}}</td>
-        <td>{{author.birthday_year}}</td>
+      <div class="table" v-for="book in books" :key="book.id">
+
+        <div class="column" v-for="(v, k) in book" :key="v">
+
+          <p class="title">{{k}}:</p>
+          <p class="content">{{v}}</p>
+          
+        </div>
+        <!--{{'='.repeat(268)}} -->
+      </div>
         
-      </tr>
   </div>
   
 </template>
-
-
 
 <script>
   import Authors from './components/Authors.vue'
   import axios from 'axios'
 
-  const API_URL ='http://127.0.0.1:8000/users/'
 
   export default {
     name: 'App',
@@ -34,35 +34,27 @@
       Authors,
     },
     data: () => ({
-        authors: [],
-        Myurls: `${API_URL}`,
+        urls: null,
+        users: null,
+        books: null,
+        authors: null,
       }),
       mounted() {
         axios
-          .get('http://127.0.0.1:8000/users')
-          .then(response => response.json())
-          .then(json => this.authors = json)
+          .get('http://127.0.0.1:8000/books/')
+          // .then(response => this.users = response.data)
+          .then(data => this.books = data.data)
           .catch(err => alert(err))
       },
-
-    // watch: {
-    //   Myurls: function(url) {
-       
-    //     fetch(url)
-    //       .then(response => console.log('Json files is here: ' + response.json() ))
-    //       .then( json => console.log(`Json files is here: ${json}`) )
-    //       .catch(err => alert(err))
-
-          
-           
-    //   }
-    // }
-
       
   }
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -70,5 +62,23 @@
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.title {
+  background-color: #619b9e;
+  padding: 4px 10px;
+}
+.content {
+  padding: 10px;
+}
+.table {
+    display: flex;
+    flex-direction: initial;
+    margin-top: 20px;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  background-color: #87c6ae;
+  border: 1px solid #000;
 }
 </style>
