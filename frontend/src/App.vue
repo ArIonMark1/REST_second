@@ -9,24 +9,19 @@
     <br>
 
       <div class="table" v-for="book in books" :key="book.id">
-
         <div class="column" v-for="(v, k) in book" :key="v">
 
           <p class="title">{{k}}:</p>
           <p class="content">{{v}}</p>
           
         </div>
-        <!--{{'='.repeat(268)}} -->
-      </div>
-        
+      </div> 
   </div>
-  
 </template>
 
 <script>
   import Authors from './components/Authors.vue'
   import axios from 'axios'
-
 
   export default {
     name: 'App',
@@ -46,7 +41,6 @@
           .then(data => this.books = data.data)
           .catch(err => alert(err))
       },
-      
   }
 </script>
 
