@@ -7,6 +7,5 @@ from users.models import BaseUser
 class Author(models.Model):
     user = models.OneToOneField(BaseUser, on_delete=models.CASCADE, null=True)
 
-
     def __str__(self):
-        return f'{self.user.username} {self.user.email}'
+        return f'{self.user.first_name} {self.user.last_name}'

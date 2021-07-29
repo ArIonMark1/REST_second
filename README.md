@@ -48,3 +48,6 @@
     - вьюхи
 
 lesson1 complete! forse...
+lesson2 complete!
+lesson3 ... complete!
+lesson4 in progress

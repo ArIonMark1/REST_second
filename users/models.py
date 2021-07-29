@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 
 class BaseUser(AbstractUser):
-    # is_author = models.BooleanField(default=False)
+    is_author = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.username
+        return f'{self.first_name} {self.last_name}'
